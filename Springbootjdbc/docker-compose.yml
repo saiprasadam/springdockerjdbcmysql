@@ -1,0 +1,21 @@
+version: "3"
+services:
+  springbootjdbc:
+    image: springbootjbdc
+    ports:
+      - "8080:8080"
+    networks:
+      - springbootjbdc-mysql
+    depends_on:
+      - mysqldb
+ 
+  mysqldb:
+    image: mysql:8
+    networks:
+      - springbootjbdc-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mkrestds  
+
+networks:
+  springbootjbdc-mysql:
